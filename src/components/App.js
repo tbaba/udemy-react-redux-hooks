@@ -2,9 +2,12 @@ import React, { useState, useReducer } from 'react';
 import reducer from '../reducers';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+import Event from './Event';
+
 const App = () => {
   const [state, dispatch] = useReducer(reducer, []);
   const [event, setEvent] = useState({});
+  const { title, body } = event;
 
   const addEvent = (e) => {
     e.preventDefault();
@@ -24,6 +27,10 @@ const App = () => {
     }
   }
 
+  const deleteEvent = (id) => {
+    dispatch({ type: 'DELETE_EVENT', id });
+  };
+
   return (
     <div className="container-fluid">
       <div className="newEventForm mb-5">
@@ -32,10 +39,12 @@ const App = () => {
           <div className="form-group">
             <label htmlFor="formEventTitle">タイトル</label>
             <input
+              type="text"
               className="form-control"
               id="formEventTitle"
               onChange={e => changeEvent(e.target.value, 'title')}
-              value={event.title}
+              value={title}
+              defaultValue={""}
             />
           </div>
           <div className="form-group">
@@ -44,7 +53,8 @@ const App = () => {
               className="form-control"
               id="formEventBody"
               onChange={e => changeEvent(e.target.value, 'body')}
-              value={event.body}
+              value={body}
+              defaultValue={""}
             />
           </div>
           <button className="btn btn-primary" onClick={addEvent}>イベントを作成する</button>
@@ -63,6 +73,9 @@ const App = () => {
               <th></th>
             </tr>
           </thead>
+          <tbody>
+            {state.map(event => <Event key={event.id} event={event} onChange={deleteEvent} />)}
+          </tbody>
         </table>
       </div>
     </div>
