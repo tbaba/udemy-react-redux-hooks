@@ -31,6 +31,10 @@ const App = () => {
     dispatch({ type: 'DELETE_EVENT', id });
   };
 
+  const deleteAllEvents = () => {
+    dispatch({ type: 'DELETE_ALL_EVENTS' });
+  };
+
   return (
     <div className="container-fluid">
       <div className="newEventForm mb-5">
@@ -58,7 +62,7 @@ const App = () => {
             />
           </div>
           <button className="btn btn-primary" onClick={addEvent}>イベントを作成する</button>
-          <button className="btn btn-danger">全てのイベントを削除する</button>
+          <button className="btn btn-danger" onClick={deleteAllEvents}>全てのイベントを削除する</button>
         </form>
       </div>
       <div className="eventsList">
