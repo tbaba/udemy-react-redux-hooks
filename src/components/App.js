@@ -35,6 +35,9 @@ const App = () => {
     dispatch({ type: 'DELETE_ALL_EVENTS' });
   };
 
+  const addButtonIsDisabled = event.title === '' || event.body === '';
+  const deleteAllEventButtonIsDisabled = state.length === 0;
+
   return (
     <div className="container-fluid">
       <div className="newEventForm mb-5">
@@ -59,8 +62,8 @@ const App = () => {
               value={body}
             />
           </div>
-          <button type="button" className="btn btn-primary" onClick={addEvent}>イベントを作成する</button>
-          <button type="button" className="btn btn-danger" onClick={deleteAllEvents}>全てのイベントを削除する</button>
+          <button type="button" className="btn btn-primary" onClick={addEvent} disabled={addButtonIsDisabled}>イベントを作成する</button>
+          <button type="button" className="btn btn-danger" onClick={deleteAllEvents} disabled={deleteAllEventButtonIsDisabled}>全てのイベントを削除する</button>
         </form>
       </div>
       <div className="eventsList">
