@@ -6,7 +6,7 @@ import Event from './Event';
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, []);
-  const [event, setEvent] = useState({});
+  const [event, setEvent] = useState({ title: '', body: '' });
   const { title, body } = event;
 
   const addEvent = (e) => {
@@ -48,7 +48,6 @@ const App = () => {
               id="formEventTitle"
               onChange={e => changeEvent(e.target.value, 'title')}
               value={title}
-              defaultValue={""}
             />
           </div>
           <div className="form-group">
@@ -58,7 +57,6 @@ const App = () => {
               id="formEventBody"
               onChange={e => changeEvent(e.target.value, 'body')}
               value={body}
-              defaultValue={""}
             />
           </div>
           <button className="btn btn-primary" onClick={addEvent}>イベントを作成する</button>
