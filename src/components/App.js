@@ -59,8 +59,8 @@ const App = () => {
               value={body}
             />
           </div>
-          <button className="btn btn-primary" onClick={addEvent}>イベントを作成する</button>
-          <button className="btn btn-danger" onClick={deleteAllEvents}>全てのイベントを削除する</button>
+          <button type="button" className="btn btn-primary" onClick={addEvent}>イベントを作成する</button>
+          <button type="button" className="btn btn-danger" onClick={deleteAllEvents}>全てのイベントを削除する</button>
         </form>
       </div>
       <div className="eventsList">
