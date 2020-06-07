@@ -28,11 +28,15 @@ const App = () => {
   }
 
   const deleteEvent = (id) => {
-    dispatch({ type: 'DELETE_EVENT', id });
+    if (window.confirm(`${id}のイベントを削除します。よろしいですか？`)) {
+      dispatch({ type: 'DELETE_EVENT', id });
+    }
   };
 
   const deleteAllEvents = () => {
-    dispatch({ type: 'DELETE_ALL_EVENTS' });
+    if (window.confirm('全てのイベントを削除します。よろしいですか？')) {
+      dispatch({ type: 'DELETE_ALL_EVENTS' });
+    }
   };
 
   const addButtonIsDisabled = event.title === '' || event.body === '';
